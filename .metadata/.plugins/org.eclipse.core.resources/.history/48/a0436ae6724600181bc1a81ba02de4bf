@@ -1,0 +1,6 @@
+
+public class Vehicule {
+	private double velocity;
+	
+	
+}
