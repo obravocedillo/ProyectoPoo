@@ -1,0 +1,41 @@
+import java.awt.Dimension;
+import java.awt.Graphics;
+
+import javax.swing.JFrame;
+
+public class GameMotor extends JFrame  implements Runnable{
+	
+	static double FPS = 30.0;
+	PaanelJuego pj;
+	
+	public GameMotor(){
+		super("Race Game");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setPreferredSize(new Dimension(1000, 1000));
+		this.pack();
+		this.setVisible(true);
+		Thread thread = new Thread(this);
+		thread.start();
+		
+	}
+		
+	
+	
+	@Override
+	public void run() {
+		try {
+			System.out.println(FPS);
+			Thread.sleep(50);
+			this.repaint();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void main(String[] args){
+			GameMotor gm = new GameMotor();
+			
+	}
+	
+}

@@ -1,5 +1,0 @@
-
-public class GameMotor {
-	static double FPS = 30;
-	
-}

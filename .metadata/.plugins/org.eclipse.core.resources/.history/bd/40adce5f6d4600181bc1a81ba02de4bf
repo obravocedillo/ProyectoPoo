@@ -1,7 +1,0 @@
-import javafx.*;
-
-
-public class GameMotor {
-	private double velocity;
-	
-}

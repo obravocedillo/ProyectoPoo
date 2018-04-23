@@ -1,0 +1,23 @@
+import java.awt.Graphics;
+
+public class Vehicule {
+	private int velocity;
+	int turn;
+	int height;
+	int width;
+	
+	
+	public Vehicule(){
+		this.width = 100;
+		this.height = 100;
+	}
+	
+	public void paintShape(Graphics g){
+		g.drawRect(100+velocity, 100+turn, width, height);
+	}
+	
+	public void setVelocity(int velocity){
+		this.velocity = velocity;
+	}
+	
+}
