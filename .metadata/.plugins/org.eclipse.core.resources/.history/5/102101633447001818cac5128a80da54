@@ -14,8 +14,8 @@ public class Listener implements KeyListener {
 	     if (code == KeyEvent.VK_DOWN) {
 	    	 System.out.println("abajo");
 	    	 this.vehicule.setTurn(180);
-	    	 this.vehicule.setY(20);
-	    	 this.vehicule.setX(0);
+	    	 this.vehicule.setVelocityY(20);
+	    	 this.vehicule.setVelocity(0);
 	    	 
 	    	 
 	    } else if (code == KeyEvent.VK_UP) {
