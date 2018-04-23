@@ -36,7 +36,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	public void run() {
 		try {
 			while(gameActive){
-				
+				this.vehicule.setVelocity(20);
 				System.out.println(this.vehicule.getTurn());
 				this.repaint();
 				Thread.sleep(30);

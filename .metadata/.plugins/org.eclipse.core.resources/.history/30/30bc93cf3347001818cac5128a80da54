@@ -14,27 +14,18 @@ public class Listener implements KeyListener {
 	     if (code == KeyEvent.VK_DOWN) {
 	    	 System.out.println("abajo");
 	    	 this.vehicule.setTurn(180);
-	    	 this.vehicule.setVelocityY(20);
-	    	 this.vehicule.setVelocity(0);
-	    	 
 	    	 
 	    } else if (code == KeyEvent.VK_UP) {
 	    	System.out.println("arriba");
 	    	this.vehicule.setTurn(0);
-	    	 this.vehicule.setVelocityY(-20);
-	    	 this.vehicule.setVelocity(0);
 
 	     }else if (code == KeyEvent.VK_LEFT) {
 	    	 System.out.println("izquierda");
 	    	 this.vehicule.setTurn(240);
-	    	 this.vehicule.setVelocity(-20);
-	    	 this.vehicule.setVelocityY(0);
 	               
 	     }else if (code == KeyEvent.VK_RIGHT) {
 	    	 System.out.println("derecha");
 	    	 this.vehicule.setTurn(90);
-	    	 this.vehicule.setVelocity(20);
-	    	 this.vehicule.setVelocityY(0);
 	       }
 	         
 	    }
