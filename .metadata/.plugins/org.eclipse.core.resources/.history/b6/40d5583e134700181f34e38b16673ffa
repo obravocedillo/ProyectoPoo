@@ -16,13 +16,32 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.vehicule = new Vehicule();
 		this.setPreferredSize(new Dimension(1000, 1000));
 		
-		
 		this.vehicule = new Vehicule();
 		this.gameActive = true;
 		
-		
 		Thread thread = new Thread(this);
 		thread.start();
+		this.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				isPressed = false;
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				isPressed = true;
+				int keyCode = e.getKeyCode();
+				System.out.println(keyCode);				
+			}
+		});
 		
 	}
 	
@@ -39,6 +58,7 @@ public class PanelJuego extends JPanel implements Runnable {
 			while(gameActive){
 				this.vehicule.setVelocity(20);
 				this.repaint();
+				
 				Thread.sleep(30);
 				
 			}

@@ -16,7 +16,6 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.vehicule = new Vehicule();
 		this.setPreferredSize(new Dimension(1000, 1000));
 		
-		
 		this.vehicule = new Vehicule();
 		this.gameActive = true;
 		

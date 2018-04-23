@@ -15,7 +15,26 @@ public class PanelJuego extends JPanel implements Runnable {
 		super();
 		this.vehicule = new Vehicule();
 		this.setPreferredSize(new Dimension(1000, 1000));
-		
+		this.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				System.out.println(e);
+				
+			}
+		});
 		
 		this.vehicule = new Vehicule();
 		this.gameActive = true;

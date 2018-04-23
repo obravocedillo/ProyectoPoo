@@ -14,8 +14,7 @@ public class GameMotor extends JFrame{
 	public GameMotor(){
 		super("Race Game");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Listener listener = new Listener();
-		this.addKeyListener(listener);
+		
 		this.pj = new PanelJuego();
 		this.add(pj);
 		this.pack();

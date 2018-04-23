@@ -16,13 +16,41 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.vehicule = new Vehicule();
 		this.setPreferredSize(new Dimension(1000, 1000));
 		
-		
 		this.vehicule = new Vehicule();
 		this.gameActive = true;
 		
 		
 		Thread thread = new Thread(this);
 		thread.start();
+		this.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				isPressed = false;
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+			    if (e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+			            System.out.println("derecha");
+			    } else if (e.getKeyCode() == KeyEvent.VK_LEFT ) {
+			            //Left arrow key code
+			    } else if (e.getKeyCode() == KeyEvent.VK_UP ) {
+			            //Up arrow key code
+			    } else if (e.getKeyCode() == KeyEvent.VK_DOWN ) {
+			            //Down arrow key code
+			    }
+
+			    repaint();
+			}
+		});
 		
 	}
 	
