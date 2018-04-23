@@ -8,14 +8,31 @@ public class Vehicule {
 	private int turn;
 	private int height;
 	private int width;
+	private int lineX,lineY;
 	
 	
 	public Vehicule(){
 		this.velocity = 0;
 		this.velocityY = 0;
 		this.turn = 0;
-		this.width = 100;
-		this.height = 100;
+		this.width = 20;
+		this.height = 20;
+	}
+	
+	public void setLineX(int lineX) {
+		this.lineX+=lineX;
+	}
+	
+	public int getLineX() {
+		return this.lineX;
+	}
+	
+	public void setLineY(int lineY) {
+		this.lineY+=lineY;
+	}
+	
+	public int getLineY() {
+		return this.lineY;
 	}
 	
 	

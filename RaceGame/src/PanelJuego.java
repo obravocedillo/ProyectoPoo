@@ -13,7 +13,8 @@ public class PanelJuego extends JPanel implements Runnable {
 	
 	public PanelJuego(Vehicule vehicule){
 		super();
-		this.setPreferredSize(new Dimension(1000, 1000));
+		this.setPreferredSize(new Dimension(1250, 800));
+		this.setBackground(Color.BLACK);
 		
 		
 		this.vehicule = vehicule;
@@ -27,7 +28,12 @@ public class PanelJuego extends JPanel implements Runnable {
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 100, 100);
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 1250, 1500);
+		g.setColor(Color.CYAN);
+		g.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 30, 30);
+		g.setColor(Color.WHITE);
+		g.fillRect(0+this.vehicule.getLineX(),0+this.vehicule.getLineY(),30,30);
 		
 		
 	}
@@ -38,7 +44,20 @@ public class PanelJuego extends JPanel implements Runnable {
 			while(gameActive){
 				this.vehicule.setVelocity(this.vehicule.getX());
 				this.vehicule.setVelocityY(this.vehicule.getY());
-				System.out.println(this.vehicule.getTurn());
+				
+				
+				if(this.vehicule.getVelocity()>1250) {
+					this.vehicule.setVelocity(-1280);
+				}
+				else if(this.vehicule.getVelocityY()>800) {
+					this.vehicule.setVelocityY(-830);
+				}
+				else if(this.vehicule.getVelocityY()<0) {
+					this.vehicule.setVelocityY(830);
+				}
+				else if(this.vehicule.getVelocity()<0) {
+					this.vehicule.setVelocity(1280);
+				}
 				this.repaint();
 				Thread.sleep(30);
 				
