@@ -8,7 +8,7 @@ public class Vehicule {
 	
 	
 	public Vehicule(){
-		this.velocity = 50;
+		this.velocity = 0;
 		this.turn = 0;
 		this.width = 100;
 		this.height = 100;
@@ -21,7 +21,15 @@ public class Vehicule {
 	}
 	
 	public int getVelocity(){
-		return velocity;
+		return this.velocity;
+	}
+	
+	public void setTurn(int turn) {
+		this.turn=turn;
+	}
+	
+	public int getTurn() {
+		return this.turn;
 	}
 	
 }
