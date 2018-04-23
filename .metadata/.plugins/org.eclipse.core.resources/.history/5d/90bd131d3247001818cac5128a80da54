@@ -13,7 +13,6 @@ public class Listener implements KeyListener {
 		 	
 	     if (code == KeyEvent.VK_DOWN) {
 	    	 System.out.println("abajo");
-	    	 this.vehicule.setTurn(180);
 	    	 
 	    } else if (code == KeyEvent.VK_UP) {
 	    	System.out.println("arriba");
@@ -21,7 +20,6 @@ public class Listener implements KeyListener {
 
 	     }else if (code == KeyEvent.VK_LEFT) {
 	    	 System.out.println("izquierda");
-	    	 this.vehicule.setTurn(240);
 	               
 	     }else if (code == KeyEvent.VK_RIGHT) {
 	    	 System.out.println("derecha");

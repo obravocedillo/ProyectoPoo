@@ -16,7 +16,7 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.setPreferredSize(new Dimension(1000, 1000));
 		
 		
-		this.vehicule = vehicule;
+		this.vehicule = new Vehicule();
 		this.gameActive = true;
 		
 		
@@ -37,7 +37,6 @@ public class PanelJuego extends JPanel implements Runnable {
 		try {
 			while(gameActive){
 				this.vehicule.setVelocity(20);
-				System.out.println(this.vehicule.getTurn());
 				this.repaint();
 				Thread.sleep(30);
 				
