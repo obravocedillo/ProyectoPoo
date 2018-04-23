@@ -17,7 +17,7 @@ public class Vehicule {
 	
 	
 	public void setVelocity(int velocity){
-		this.velocity += velocity;
+		this.velocity = velocity;
 	}
 	
 	public int getVelocity(){
