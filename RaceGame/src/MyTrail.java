@@ -6,8 +6,6 @@ import java.util.ArrayList;
 class MyTrail{
    
     private int life;
-    private int x;
-    private int y;
     private Vehicule vehicule;
     private Color color;
     private ArrayList <Puntos> trail; 
@@ -17,7 +15,20 @@ class MyTrail{
         this.color = Color.CYAN;  
         trail = new ArrayList<>();
     }
-    public void Draw(Graphics g2) {
+    
+    
+    
+    
+    public ArrayList<Puntos> getTrail() {
+		return trail;
+	}
+
+
+
+
+
+
+	public void Draw(Graphics g2) {
     	for(int i=0;i<trail.size();i++){
     		if(this.trail.get(i).life < 0){
              this.trail.remove(i);   
@@ -35,9 +46,11 @@ class MyTrail{
     }
 
     	 
-    this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),Color.CYAN));
+    this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),Color.GREEN));
     	
         
     }
+    
+    
     
 }

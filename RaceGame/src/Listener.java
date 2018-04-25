@@ -1,9 +1,12 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 public class Listener implements KeyListener {
 		Vehicule vehicule;
+		ArrayList <Puntos> yaRecorrido;
 	public Listener(Vehicule vehicule){
+		this.yaRecorrido = new ArrayList<>();
 		this.vehicule = vehicule;
 	}
 	

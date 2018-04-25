@@ -17,7 +17,7 @@ public class GameMotor extends JFrame{
 		this.vehicule = new Vehicule();
 		Listener listener = new Listener(vehicule);
 		this.addKeyListener(listener);
-		this.pj = new PanelJuego(vehicule);
+		this.pj = new PanelJuego(vehicule,listener);
 		this.add(pj);
 		this.pack();
 		this.setVisible(true);

@@ -1,12 +1,15 @@
 
+import java.awt.AWTException;
 import java.awt.Color;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Robot;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.print.attribute.standard.Media;
 import javax.swing.ImageIcon;
@@ -23,10 +26,14 @@ public class PanelJuego extends JPanel implements Runnable {
 	private boolean gameActive;
 	private Image fondo;
 	private Image moto;
+	private Listener listener;
+	Robot robot;
+	Color choque;
+	Clip clip;
 	AudioInputStream audioIn;
 	
 	
-	public PanelJuego(Vehicule vehicule){
+	public PanelJuego(Vehicule vehicule,Listener listener){
 		super();
 		this.setPreferredSize(new Dimension(1250, 800));
 		
@@ -37,10 +44,17 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.gameActive = true;
 		this.fondo = new ImageIcon("Tron+Grid.png").getImage();
 		this.reproducirMusica();
+		this.listener = listener;
 		
 		Thread thread = new Thread(this);
 		thread.start();
-		
+		this.vehicule.setX(10);
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -53,6 +67,9 @@ public class PanelJuego extends JPanel implements Runnable {
 		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
 		g2d.setColor(Color.CYAN);
 		myTrail.Draw(g);
+		myTrail.Update();
+		this.calcularColision();
+		
 		
 		
 	}
@@ -62,7 +79,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	public void reproducirMusica() {
 			try {
 				audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResource("song1.wav"));
-				Clip clip = AudioSystem.getClip();
+				clip = AudioSystem.getClip();
 				clip.open(audioIn);
 				clip.start();
 			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
@@ -72,6 +89,11 @@ public class PanelJuego extends JPanel implements Runnable {
 			
 	}
 
+	public void calcularColision(){
+		choque = robot.getPixelColor(this.vehicule.getVelocity(), this.vehicule.getLineY());
+		System.out.println(choque);
+		
+	}
 
 	@Override
 	public void run() {
@@ -96,7 +118,11 @@ public class PanelJuego extends JPanel implements Runnable {
 				this.repaint();
 				
 				Thread.sleep(30);
-				myTrail.Update();
+				if(Thread.interrupted()){
+					clip.stop();
+				}
+			
+				
 				
 			}
 			

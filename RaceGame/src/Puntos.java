@@ -13,6 +13,12 @@ public class Puntos {
 		this.life = 7000;
 	}
 	
+	public Puntos(int x, int y){
+		this.x = x;
+		this.y = y;
+		this.life = 7000;
+	}
+	
 	public int getX() {
 		return x;
 	}
