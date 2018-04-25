@@ -33,15 +33,15 @@ class MyTrail{
         
     }
     public void Update(){
-<<<<<<< HEAD
+
 
 
     	 for(int i=0; i<trail.size();i++){
          	trail.get(i).setLife(trail.get(i).getLife()-15);;
-=======
+
     	 for(int i=0; i<this.trail.size();i++){
          	this.trail.get(i).setLife(this.trail.get(i).getLife()-15);;
->>>>>>> 82f06df78fe2c36dd1b7def521d3e97a74753f26
+
          }
     	 
     this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),Color.CYAN));
