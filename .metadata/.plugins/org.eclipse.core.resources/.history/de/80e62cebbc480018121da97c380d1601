@@ -2,7 +2,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+<<<<<<< HEAD
 
+
+=======
+>>>>>>> 82f06df78fe2c36dd1b7def521d3e97a74753f26
 class MyTrail{
    
     private int life;
