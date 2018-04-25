@@ -15,8 +15,8 @@ public class Vehicule {
 		this.velocity = 0;
 		this.velocityY = 0;
 		this.turn = 0;
-		this.width = 20;
-		this.height = 20;
+		this.width = 15;
+		this.height = 15;
 	}
 	
 	public void setLineX(int lineX) {

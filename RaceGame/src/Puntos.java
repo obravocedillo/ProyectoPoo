@@ -10,7 +10,7 @@ public class Puntos {
 		this.x = x;
 		this.y = y;
 		this.color = color;
-		this.life = 3000;
+		this.life = 2500;
 	}
 	
 	public int getX() {

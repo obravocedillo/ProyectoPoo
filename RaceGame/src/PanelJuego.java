@@ -35,10 +35,9 @@ public class PanelJuego extends JPanel implements Runnable {
 		Graphics2D g2d = (Graphics2D) g;
 		//g.setColor(Color.BLACK);}
 		//g.fillRect(0, 0, 1250, 1500);
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
 		g2d.setColor(Color.CYAN);
-		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 30, 30);
-		g2d.setColor(Color.WHITE);
-		g2d.fillRect(0+this.vehicule.getLineX(),0+this.vehicule.getLineY(),30,30);
 		myTrail.Draw(g);
 		
 		
@@ -55,16 +54,16 @@ public class PanelJuego extends JPanel implements Runnable {
 				
 				
 				if(this.vehicule.getVelocity()>1250) {
-					this.vehicule.setVelocity(-1280);
+					this.vehicule.setVelocity(-1265);
 				}
 				else if(this.vehicule.getVelocityY()>800) {
-					this.vehicule.setVelocityY(-830);
+					this.vehicule.setVelocityY(-815);
 				}
 				else if(this.vehicule.getVelocityY()<0) {
-					this.vehicule.setVelocityY(830);
+					this.vehicule.setVelocityY(815);
 				}
 				else if(this.vehicule.getVelocity()<0) {
-					this.vehicule.setVelocity(1280);
+					this.vehicule.setVelocity(1265);
 				}
 				this.repaint();
 				

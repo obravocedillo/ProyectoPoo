@@ -25,7 +25,7 @@ class MyTrail{
              trail.remove(i);   
             }
     		g2.setColor(trail.get(i).getColor());
-    		g2.fillRect(trail.get(i).getX(), trail.get(i).getY(), 30, 30);
+    		g2.fillRect(trail.get(i).getX(), trail.get(i).getY(), 15, 15);
     		
     	}
         
@@ -34,7 +34,7 @@ class MyTrail{
         //Lets say Update is called after 16ms
         //decrement the time
     	 for(int i=0; i<trail.size();i++){
-         	trail.get(i).setLife(trail.get(i).getLife()-30);;
+         	trail.get(i).setLife(trail.get(i).getLife()-15);;
          }
     	 
     	trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),Color.CYAN));
