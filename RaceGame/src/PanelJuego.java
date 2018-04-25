@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
@@ -15,6 +16,9 @@ public class PanelJuego extends JPanel implements Runnable {
 		super();
 		this.setPreferredSize(new Dimension(1250, 800));
 		this.setBackground(Color.BLACK);
+		
+		
+		
 		
 		
 		this.vehicule = vehicule;
@@ -31,10 +35,9 @@ public class PanelJuego extends JPanel implements Runnable {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 1250, 1500);
 		g.setColor(Color.CYAN);
+		
 		g.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 30, 30);
 		g.setColor(Color.WHITE);
-		g.fillRect(0+this.vehicule.getLineX(),0+this.vehicule.getLineY(),30,30);
-		
 		
 	}
 
