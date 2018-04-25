@@ -1,0 +1,31 @@
+import java.util.*;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class MyTrail {
+
+    Vehicule p;
+    int x;
+    int y;
+    int c;
+    Rectangle pT;
+
+    public MyTrail(Vehicule vehicule) {
+        p = vehicule;
+        x = p.getVelocity();
+        y = p.getVelocityY();
+        pT = new Rectangle (x,y);
+    }
+
+    public Rectangle getRect() {
+        return pT;
+    }
+
+    public void draw(Graphics2D g2d) {
+        x = p.getVelocity();
+        y = p.getVelocityY();
+        g2d.setColor(Color.blue);
+        g2d.fillRect(x,y,10,10);
+    }
+}

@@ -1,0 +1,35 @@
+import java.awt.Color;
+
+/* fragmento de codigo recopilado de 
+ *  https://gamedev.stackexchange.com/questions/36011/how-to-implement-the-light-trails-for-a-tron-game 
+ */
+
+class MyTrail
+{
+    int x;
+    int y;
+    int life;
+    Color color;
+    public MyTrail(int x, int y)
+    {
+        this.x = x;
+        this.y = y;
+        this.life = 3000;   //3000ms = 3seconds
+        this.color = Color.BLUE;  //(R, G, B) = (0, 0, 255)
+    }
+    public void Draw()
+    {
+        if(life > 0)
+        {
+            
+        }
+    }
+    public void Update()
+    {
+        //Lets say Update is called after 16ms
+        //decrement the time
+        life -= 16;   //depends upon frequency of method call
+        //update the color with respect to time
+        
+    }
+}
