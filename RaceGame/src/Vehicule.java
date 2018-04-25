@@ -1,8 +1,8 @@
 import java.awt.Graphics;
 
 public class Vehicule {
-	private int positionX;
-	private int positionY;
+	private int velocity;
+	private int velocityY;
 	private int x;
 	private int y;
 	private int turn;
@@ -12,8 +12,8 @@ public class Vehicule {
 	
 	
 	public Vehicule(){
-		this.positionX = 0;
-		this.positionY = 0;
+		this.velocity = 0;
+		this.velocityY = 0;
 		this.turn = 0;
 		this.width = 20;
 		this.height = 20;
@@ -38,11 +38,11 @@ public class Vehicule {
 	
 	
 	public void setVelocity(int velocity){
-		this.positionX += velocity;
+		this.velocity += velocity;
 	}
 	
 	public int getVelocity(){
-		return this.positionX;
+		return this.velocity;
 	}
 	
 	public void setTurn(int turn) {
@@ -54,11 +54,11 @@ public class Vehicule {
 	}
 	
 	public void setVelocityY(int velocityY){
-		this.positionY += velocityY;
+		this.velocityY += velocityY;
 	}
 	
 	public int getVelocityY(){
-		return this.positionY;
+		return this.velocityY;
 	}
 
 

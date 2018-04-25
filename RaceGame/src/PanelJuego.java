@@ -20,13 +20,7 @@ public class PanelJuego extends JPanel implements Runnable {
 		
 		//this.setBackground(Color.BLACK);
 		
-<<<<<<< HEAD
-		
-		
-		
-=======
 		this.myTrail = new MyTrail(vehicule);
->>>>>>> f72a5e71077c17fee4ad0c4a072a65d5743200f9
 		this.vehicule = vehicule;
 		this.gameActive = true;
 		
@@ -38,14 +32,6 @@ public class PanelJuego extends JPanel implements Runnable {
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-<<<<<<< HEAD
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 1250, 1500);
-		g.setColor(Color.CYAN);
-		
-		g.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 30, 30);
-		g.setColor(Color.WHITE);
-=======
 		Graphics2D g2d = (Graphics2D) g;
 		//g.setColor(Color.BLACK);}
 		//g.fillRect(0, 0, 1250, 1500);
@@ -55,7 +41,6 @@ public class PanelJuego extends JPanel implements Runnable {
 		g2d.fillRect(0+this.vehicule.getLineX(),0+this.vehicule.getLineY(),30,30);
 		myTrail.Draw(g);
 		
->>>>>>> f72a5e71077c17fee4ad0c4a072a65d5743200f9
 		
 	}
 	
