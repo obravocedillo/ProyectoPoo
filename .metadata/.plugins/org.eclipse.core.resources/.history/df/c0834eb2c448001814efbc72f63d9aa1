@@ -1,0 +1,103 @@
+
+import java.awt.Color;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.io.FileInputStream;
+
+import javax.swing.ImageIcon;
+
+import javax.swing.JPanel;
+
+public class PanelJuego extends JPanel implements Runnable {
+	Vehicule vehicule;
+	MyTrail myTrail;
+	private boolean gameActive;
+	private Image fondo;
+	private Image moto;
+	
+	
+	
+	public PanelJuego(Vehicule vehicule){
+		super();
+		this.setPreferredSize(new Dimension(1250, 800));
+		
+		//this.setBackground(Color.BLACK);
+		
+		this.myTrail = new MyTrail(vehicule);
+		this.vehicule = vehicule;
+		this.gameActive = true;
+		this.fondo = new ImageIcon("Tron+Grid.png").getImage();
+		
+		Thread thread = new Thread(this);
+		thread.start();
+		
+		
+	}
+	
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		g.drawImage(this.fondo, 0, 0, this.getWidth(), this.getHeight(),this);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
+		g2d.setColor(Color.CYAN);
+		myTrail.Draw(g);
+		
+		
+	}
+	
+	
+	
+	public void reproducirMusica(){
+		try{
+			System.out.println("reproduciendo mp3");
+			
+			FileInputStream archivo = new FileInputStream(mp3);
+			//creamos un objeto de tipo player, player es una clase se la libreria Jlayer que miramos en el video de convertir texto a voz -
+			Player playMP3 = new Player(archivo);
+			//y reproducimos -
+			playMP3.play();
+			} catch(Exception exc){
+			//en caso de no encontrar el archivo o otro tipo de error mostramos el archivo -
+			exc.printStackTrace();
+			System.out.println("No se pudo reproducir el archivo");
+	}
+
+
+	@Override
+	public void run() {
+		try {
+			while(gameActive){
+				this.vehicule.setVelocity(this.vehicule.getX());
+				this.vehicule.setVelocityY(this.vehicule.getY());
+				
+				
+				if(this.vehicule.getVelocity()>1250) {
+					this.vehicule.setVelocity(-1265);
+				}
+				else if(this.vehicule.getVelocityY()>800) {
+					this.vehicule.setVelocityY(-815);
+				}
+				else if(this.vehicule.getVelocityY()<0) {
+					this.vehicule.setVelocityY(815);
+				}
+				else if(this.vehicule.getVelocity()<0) {
+					this.vehicule.setVelocity(1265);
+				}
+				this.repaint();
+				
+				Thread.sleep(30);
+				myTrail.Update();
+				
+			}
+			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}	
+	}
+		
+}

@@ -1,25 +1,20 @@
-import java.applet.Applet;
-import java.applet.AudioClip;
+
 import java.awt.Color;
-import sun.audio.*;
+
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
+import javax.print.attribute.standard.Media;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
 
 public class PanelJuego extends JPanel implements Runnable {
@@ -27,7 +22,8 @@ public class PanelJuego extends JPanel implements Runnable {
 	MyTrail myTrail;
 	private boolean gameActive;
 	private Image fondo;
-	
+	private Image moto;
+	AudioInputStream audioIn;
 	
 	
 	public PanelJuego(Vehicule vehicule){
@@ -39,43 +35,20 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.myTrail = new MyTrail(vehicule);
 		this.vehicule = vehicule;
 		this.gameActive = true;
-		this.setImage("/Users/alejandroparra/Documents/ISC/ProyectoPoo/RaceGame/src/images/Tron+Grid.png");
-		
-		String archivoMusica = "/Users/alejandroparra/Documents/ISC/ProyectoPoo/RaceGame/src/images/music.mp3";
-		InputStream in = null;
-		try {
-			 in= new FileInputStream(archivoMusica);
-			
-		} catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		}
-		
-		AudioStream audioStream;
-		try {
-			audioStream = new AudioStream(in);
-			AudioPlayer.player.start(audioStream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    
-
-	  
-	    
-		
-		
+		this.fondo = new ImageIcon("Tron+Grid.png").getImage();
+		this.reproducirMusica();
 		
 		Thread thread = new Thread(this);
 		thread.start();
 		
+		
 	}
+	
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
+		g.drawImage(this.fondo, 0, 0, this.getWidth(), this.getHeight(),this);
 		Graphics2D g2d = (Graphics2D) g;
-		//g.setColor(Color.BLACK);}
-		//g.fillRect(0, 0, 1250, 1500);
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
 		g2d.setColor(Color.CYAN);
@@ -84,13 +57,19 @@ public class PanelJuego extends JPanel implements Runnable {
 		
 	}
 	
-	public void setImage(String text) {
-		File pathToFile = new File(text);
-		try {
-			this.fondo = ImageIO.read(pathToFile);
-		} catch (IOException e) {
-			JOptionPane.showMessageDialog(null, "Error");
-		}
+	
+	
+	public void reproducirMusica() {
+			try {
+				audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResource("song1.wav"));
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioIn);
+				clip.start();
+			} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+				System.out.println("error" + e);
+				e.printStackTrace();
+			}
+			
 	}
 
 

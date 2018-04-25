@@ -29,19 +29,15 @@ class MyTrail{
         
     }
     public void Update(){
+    		
+    for(int i=0; i<trail.size();i++){
+         	trail.get(i).setLife(trail.get(i).getLife()-30);
+    }
 
-
-
-    	 for(int i=0; i<trail.size();i++){
-         	trail.get(i).setLife(trail.get(i).getLife()-15);;
-
-    	 for(int i=0; i<this.trail.size();i++){
-         	this.trail.get(i).setLife(this.trail.get(i).getLife()-15);;
-
-         }
     	 
     this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),Color.CYAN));
     	
         
     }
+    
 }
