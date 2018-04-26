@@ -28,7 +28,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	private Image fondo;
 	private Image moto;
 	private Listener listener;
-
+	Robot robot;
 	Color choque;
 	Clip clip;
 	AudioInputStream audioIn;
@@ -50,8 +50,13 @@ public class PanelJuego extends JPanel implements Runnable {
 		
 		this.thread = new Thread(this);
 		thread.start();
-		//this.vehicule.setX(10);
-	
+		this.vehicule.setX(10);
+		try {
+			robot = new Robot();
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	
