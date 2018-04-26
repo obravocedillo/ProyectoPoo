@@ -25,7 +25,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	MyTrail myTrail;
 	private boolean gameActive;
 	private ArrayList <Puntos> yaRecorrido;
-	private Image fondo;
+	private Image fondo,nave1,nave2,nave3,nave4;
 	private Image moto;
 	private Listener listener;
 
@@ -45,6 +45,10 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.vehicule = vehicule;
 		this.gameActive = true;
 		this.fondo = new ImageIcon("Tron+Grid.png").getImage();
+		this.nave1=new ImageIcon("ShipR.png").getImage();
+		this.nave2=new ImageIcon("ShipD.png").getImage();
+		this.nave3=new ImageIcon("ShipU.png").getImage();
+		
 		this.reproducirMusica();
 		this.listener = listener;
 		
@@ -62,6 +66,7 @@ public class PanelJuego extends JPanel implements Runnable {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
+		//g.drawImage(this.nave1, 0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 30, 15,this);
 		g2d.setColor(Color.CYAN);
 		myTrail.Draw(g);
 		myTrail.Update(this.listener);
