@@ -78,7 +78,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	
 	public void reproducirMusica() {
 			try {
-				audioIn = AudioSystem.getAudioInputStream(this.getClass().getClassLoader().getResource("song1.wav"));
+				audioIn = AudioSystem.getAudioInputStream(this.getClass().getResource("song1.wav"));
 				clip = AudioSystem.getClip();
 				clip.open(audioIn);
 				clip.start();
