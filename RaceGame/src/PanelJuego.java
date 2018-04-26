@@ -24,6 +24,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	Vehicule vehicule;
 	MyTrail myTrail;
 	private boolean gameActive;
+	private ArrayList <Puntos> yaRecorrido;
 	private Image fondo;
 	private Image moto;
 	private Listener listener;
@@ -31,6 +32,7 @@ public class PanelJuego extends JPanel implements Runnable {
 	Color choque;
 	Clip clip;
 	AudioInputStream audioIn;
+	private Thread thread;
 	
 	
 	public PanelJuego(Vehicule vehicule,Listener listener){
@@ -46,7 +48,7 @@ public class PanelJuego extends JPanel implements Runnable {
 		this.reproducirMusica();
 		this.listener = listener;
 		
-		Thread thread = new Thread(this);
+		this.thread = new Thread(this);
 		thread.start();
 		this.vehicule.setX(10);
 		try {
@@ -67,7 +69,7 @@ public class PanelJuego extends JPanel implements Runnable {
 		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
 		g2d.setColor(Color.CYAN);
 		myTrail.Draw(g);
-		myTrail.Update();
+		myTrail.Update(this.listener);
 		this.calcularColision();
 		
 		
@@ -101,6 +103,16 @@ public class PanelJuego extends JPanel implements Runnable {
 			while(gameActive){
 				this.vehicule.setVelocity(this.vehicule.getX());
 				this.vehicule.setVelocityY(this.vehicule.getY());
+				
+				this.yaRecorrido=this.myTrail.getTrail();
+				for(int i=0;i<this.yaRecorrido.size();i++) {
+					if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY()) {
+						this.thread.stop();
+					}
+					else if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX2() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY2()) {
+						this.thread.stop();
+					}
+				}
 				
 				
 				if(this.vehicule.getVelocity()>1250) {

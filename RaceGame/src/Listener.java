@@ -3,8 +3,10 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Listener implements KeyListener {
-		Vehicule vehicule;
-		ArrayList <Puntos> yaRecorrido;
+		private Vehicule vehicule;
+		private ArrayList <Puntos> yaRecorrido;
+		private int code;
+		
 	public Listener(Vehicule vehicule){
 		this.yaRecorrido = new ArrayList<>();
 		this.vehicule = vehicule;
@@ -12,7 +14,7 @@ public class Listener implements KeyListener {
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		 int code = e.getKeyCode();
+		 this.code = e.getKeyCode();
 		 	
 	     if (code == KeyEvent.VK_DOWN) {
 	    	 System.out.println("abajo");
@@ -41,6 +43,10 @@ public class Listener implements KeyListener {
 	       }
 	         
 	    }
+	
+	public int getCode() {
+		return this.code;
+	}
 	
 	
 	@Override

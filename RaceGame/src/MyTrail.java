@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 
@@ -39,15 +40,26 @@ class MyTrail{
     	}
         
     }
-    public void Update(){
+    public void Update(Listener listener){
     		
     for(int i=0; i<trail.size();i++){
-         	trail.get(i).setLife(trail.get(i).getLife()-30);
+         	trail.get(i).setLife(trail.get(i).getLife()-15);
     }
 
-    	 
-    this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),Color.GREEN));
+    	if(listener.getCode()==KeyEvent.VK_RIGHT) {
+    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity(),this.vehicule.getVelocityY()+15,Color.GREEN));
+    	}
+    	else if(listener.getCode()==KeyEvent.VK_LEFT) {
+    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity(),this.vehicule.getVelocityY()+15,Color.GREEN));
+    	}
     	
+    	else if(listener.getCode()==KeyEvent.VK_UP) {
+    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity()+15,this.vehicule.getVelocityY(),Color.GREEN));
+    	}
+    	else if(listener.getCode()==KeyEvent.VK_DOWN) {
+    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity()-15,this.vehicule.getVelocityY(),Color.GREEN));
+    	}
+    
         
     }
     
