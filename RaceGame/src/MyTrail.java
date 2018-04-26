@@ -47,10 +47,10 @@ class MyTrail{
     }
 
     	if(listener.getCode()==KeyEvent.VK_RIGHT) {
-    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity(),this.vehicule.getVelocityY()+15,Color.GREEN));
+    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity(),this.vehicule.getVelocityY()-15,Color.GREEN));
     	}
     	else if(listener.getCode()==KeyEvent.VK_LEFT) {
-    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity(),this.vehicule.getVelocityY()+15,Color.GREEN));
+    		this.trail.add(new Puntos(this.vehicule.getVelocity(),this.vehicule.getVelocityY(),this.vehicule.getVelocity(),this.vehicule.getVelocityY()-15,Color.GREEN));
     	}
     	
     	else if(listener.getCode()==KeyEvent.VK_UP) {

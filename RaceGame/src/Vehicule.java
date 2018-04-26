@@ -12,6 +12,8 @@ public class Vehicule {
 	
 	
 	public Vehicule(){
+		this.x=0;
+		this.y=0;
 		this.velocity = 0;
 		this.velocityY = 0;
 		this.turn = 0;

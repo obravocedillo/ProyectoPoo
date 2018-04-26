@@ -70,7 +70,7 @@ public class PanelJuego extends JPanel implements Runnable {
 		g2d.setColor(Color.CYAN);
 		myTrail.Draw(g);
 		myTrail.Update(this.listener);
-		this.calcularColision();
+		
 		
 		
 		
@@ -91,11 +91,7 @@ public class PanelJuego extends JPanel implements Runnable {
 			
 	}
 
-	public void calcularColision(){
-		choque = robot.getPixelColor(this.vehicule.getVelocity(), this.vehicule.getLineY());
-		System.out.println(choque);
-		
-	}
+	
 
 	@Override
 	public void run() {
