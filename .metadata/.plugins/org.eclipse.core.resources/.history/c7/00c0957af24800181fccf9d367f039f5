@@ -92,23 +92,18 @@ public class PanelJuego extends JPanel implements Runnable {
 	@Override
 	public void run() {
 		try {
-			while(this.gameActive){
+			while(gameActive){
 				this.vehicule.setVelocity(this.vehicule.getX());
 				this.vehicule.setVelocityY(this.vehicule.getY());
 				
 				this.yaRecorrido=this.myTrail.getTrail();
 				for(int i=0;i<this.yaRecorrido.size();i++) {
 					if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY()) {
-						this.gameActive = false;
-						this.thread.stop();
-						this.clip.stop();
+						this.thread.destroy();
 					}
 					else if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX2() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY2()) {
-						this.gameActive = false;
-						this.thread.stop();
-						this.clip.stop();
 						
-						
+						this.thread.destroy();
 					}
 				}
 				
@@ -126,8 +121,11 @@ public class PanelJuego extends JPanel implements Runnable {
 					this.vehicule.setVelocity(1265);
 				}
 				this.repaint();
-				Thread.sleep(30);
 				
+				Thread.sleep(30);
+				if(!Thread.State){
+					clip.stop();
+				}
 			
 				
 				

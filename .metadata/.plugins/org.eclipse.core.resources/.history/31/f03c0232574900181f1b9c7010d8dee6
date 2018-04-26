@@ -12,7 +12,7 @@ public class Puntos {
 		this.x2=x2;
 		this.y2=y2;
 		this.color = color;
-		this.life = 7000;
+		this.life = 9000;
 	}
 	
 	public Puntos(int x, int y){

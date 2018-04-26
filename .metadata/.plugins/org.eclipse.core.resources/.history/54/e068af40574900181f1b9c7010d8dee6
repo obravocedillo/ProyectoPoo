@@ -101,12 +101,10 @@ public class PanelJuego extends JPanel implements Runnable {
 					if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY()) {
 						this.gameActive = false;
 						this.thread.stop();
-						this.clip.stop();
 					}
 					else if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX2() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY2()) {
 						this.gameActive = false;
 						this.thread.stop();
-						this.clip.stop();
 						
 						
 					}
@@ -126,6 +124,7 @@ public class PanelJuego extends JPanel implements Runnable {
 					this.vehicule.setVelocity(1265);
 				}
 				this.repaint();
+				
 				Thread.sleep(30);
 				
 			

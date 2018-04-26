@@ -27,4 +27,5 @@
 <fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="Puntos"/>
+<fullyQualifiedTypeName name="java.lang.Thread.State"/>
 </qualifiedTypeNameHistroy>
