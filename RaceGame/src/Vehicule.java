@@ -11,9 +11,9 @@ public class Vehicule {
 	private int lineX,lineY;
 	
 	
-	public Vehicule(){
-		this.x=0;
-		this.y=0;
+	public Vehicule(int x, int y){
+		this.x=x;
+		this.y=y;
 		this.velocity = 0;
 		this.velocityY = 0;
 		this.turn = 0;

@@ -3,13 +3,14 @@ import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Listener implements KeyListener {
-		private Vehicule vehicule;
+		private Vehicule vehicule,vehicule2;
 		private ArrayList <Puntos> yaRecorrido;
 		private int code;
 		
-	public Listener(Vehicule vehicule){
+	public Listener(Vehicule vehicule, Vehicule vehicule2){
 		this.yaRecorrido = new ArrayList<>();
 		this.vehicule = vehicule;
+		this.vehicule2= vehicule2;
 	}
 	
 	@Override

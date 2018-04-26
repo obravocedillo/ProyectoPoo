@@ -21,10 +21,10 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
 
 public class PanelJuego extends JPanel implements Runnable {
-	Vehicule vehicule;
-	MyTrail myTrail;
+	Vehicule vehicule,vehicule2;
+	MyTrail myTrail,myTrail2;
 	private boolean gameActive;
-	private ArrayList <Puntos> yaRecorrido;
+	private ArrayList <Puntos> yaRecorrido,yaRecorrido2;
 	private Image fondo,nave1,nave2,nave3,nave4;
 	private Image moto;
 	private Listener listener;
@@ -35,14 +35,17 @@ public class PanelJuego extends JPanel implements Runnable {
 	private Thread thread;
 	
 	
-	public PanelJuego(Vehicule vehicule,Listener listener){
+	public PanelJuego(Vehicule vehicule,Vehicule vehicule2, Listener listener){
 		super();
 		this.setPreferredSize(new Dimension(1250, 800));
 		
 		//this.setBackground(Color.BLACK);
 		
-		this.myTrail = new MyTrail(vehicule);
+		
 		this.vehicule = vehicule;
+		this.vehicule2= vehicule2;
+		this.myTrail = new MyTrail(this.vehicule);
+		this.myTrail2= new MyTrail(this.vehicule2);
 		this.gameActive = true;
 		this.fondo = new ImageIcon("Tron+Grid.png").getImage();
 		this.nave1=new ImageIcon("ShipR.png").getImage();
@@ -66,10 +69,15 @@ public class PanelJuego extends JPanel implements Runnable {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 15, 15);
+		
+		g2d.fillRect(0+this.vehicule2.getVelocity(), 0+this.vehicule2.getVelocityY(), 15, 15);
 		//g.drawImage(this.nave1, 0+this.vehicule.getVelocity(), 0+this.vehicule.getVelocityY(), 30, 15,this);
 		g2d.setColor(Color.CYAN);
 		myTrail.Draw(g);
 		myTrail.Update(this.listener);
+		
+		myTrail2.Draw(g);
+		myTrail2.Update(this.listener);
 		
 		
 		
@@ -90,6 +98,37 @@ public class PanelJuego extends JPanel implements Runnable {
 			}
 			
 	}
+	
+	public void checarColision(Vehicule vehicule, MyTrail trail) {
+		ArrayList <Puntos> yaRecorrido= new ArrayList<>();
+		
+		vehicule.setVelocity(vehicule.getX());
+		vehicule.setVelocityY(vehicule.getY());
+		
+		if(trail.getColor()==Color.CYAN) {
+			this.yaRecorrido=trail.getTrail();
+			yaRecorrido=this.yaRecorrido;
+		}
+		else if(trail.getColor()==Color.ORANGE) {
+			this.yaRecorrido2=trail.getTrail();
+			yaRecorrido2=this.yaRecorrido2;
+		}
+		
+		for(int i=0;i<this.yaRecorrido.size();i++) {
+			if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY()) {
+				this.gameActive = false;
+				this.thread.stop();
+				this.clip.stop();
+			}
+			else if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX2() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY2()) {
+				this.gameActive = false;
+				this.thread.stop();
+				this.clip.stop();
+				
+				
+			}
+		}
+	}
 
 	
 
@@ -98,24 +137,8 @@ public class PanelJuego extends JPanel implements Runnable {
 	public void run() {
 		try {
 			while(this.gameActive){
-				this.vehicule.setVelocity(this.vehicule.getX());
-				this.vehicule.setVelocityY(this.vehicule.getY());
-				
-				this.yaRecorrido=this.myTrail.getTrail();
-				for(int i=0;i<this.yaRecorrido.size();i++) {
-					if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY()) {
-						this.gameActive = false;
-						this.thread.stop();
-						this.clip.stop();
-					}
-					else if(this.vehicule.getVelocity()==this.yaRecorrido.get(i).getX2() && this.vehicule.getVelocityY()==this.yaRecorrido.get(i).getY2()) {
-						this.gameActive = false;
-						this.thread.stop();
-						this.clip.stop();
-						
-						
-					}
-				}
+				this.checarColision(this.vehicule, this.myTrail);
+				this.checarColision(this.vehicule2, this.myTrail2);
 				
 				
 				if(this.vehicule.getVelocity()>1250) {

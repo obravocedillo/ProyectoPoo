@@ -25,7 +25,9 @@ class MyTrail{
 	}
 
 
-
+    public Color getColor() {
+    	return this.color;
+    }
 
 
 
